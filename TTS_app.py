@@ -1,36 +1,41 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import font
 import create_narration as Narration
 
 
 def create_gui():
-    # Create the main window
-    root = tk.Tk()
-    root.title("TTS Narration Application")
+    # init
+    TTS = tk.Tk()
+    TTS.title("TTS Narration Application")
+    TTS.geometry("1080x680")
+    TTS.configure(bg="grey")
 
-    # Set the initial window size to 960x540
-    root.geometry("960x540")
-    root.configure(bg="white")
-
-    # Create a label for the heading title
+    # App title
     heading_label = tk.Label(
-        root, text="TTS Narration Application", font=("Arial", 20))
+        TTS, text="TTS Narration Application", fg="white", bg="grey", font=("Times", 20, "bold"))
     heading_label.pack()
 
-    # Create a text input field for narration file title
-    narration_file_title = tk.Text(root, height=5, width=50)
-    narration_file_title.pack()
+    # Text input for tile title
+    file_title = tk.Text(
+        TTS, height=2, width=30,  font=("Times", 14))
+    file_title.pack(pady=10)
 
-    # Create a text input field
-    input_text = tk.Text(root, height=20, width=100)
-    input_text.pack()
+    # Text input field for TTS conversion
+    input_text = tk.Text(TTS, height=20, width=100,
+                         font=("Times", 14))
+    input_text.pack(pady=10)
 
-    custom_font = font.Font(family="Arial", size=12, weight="bold")
-    # Create a button to trigger narration creation
-    create_button = tk.Button(root, height=3, width=30, text="Create Narration", font=custom_font,
-                              bg="#9E9E9E", fg="white", command=lambda: Narration.create_narration(input_text, narration_file_title))
-    create_button.pack()
-    return root
+    # Button to generate narration
+    button_font = font.Font(family="Times", size=12, weight="bold")
+    button_style = ttk.Style()
+    button_style.configure("RoundedButton.TButton", borderwidth=15, font=button_font, height=3, width=20,
+                           relief="raised", padding=10, borderround=20)
+    geneate_narration_button = ttk.Button(TTS, style="RoundedButton.TButton", text="Create Narration",
+                                          command=lambda: Narration.create_narration(input_text, file_title))
+    geneate_narration_button.pack(pady=10)
+
+    return TTS
 
 
 def main():
