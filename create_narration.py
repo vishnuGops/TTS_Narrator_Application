@@ -1,12 +1,22 @@
 from gtts import gTTS
 
-# Input text
-text = "This is the text you want to convert to speech."
+def create_narration():
 
-# Create a gTTS object
-tts = gTTS(text=text, lang='en')  # You can specify the language (e.g., 'en' for English)
+    # Input text
+    text = "This is the text you want to convert to speech."
 
-# Save the speech as an MP3 file
-tts.save("narration.mp3")
+    # Create a gTTS object
+    tts = gTTS(text=text, lang='en',  tld='com.au')  # You can specify the language (e.g., 'en' for English)
 
-print("Speech saved as 'narration.mp3'")
+    # Save the speech as an MP3 file
+    tts.save("narration.mp3")
+
+    print("Speech saved as 'narration.mp3'")
+
+
+def main():
+    create_narration()
+
+
+if __name__ == "__main__":
+  main()
