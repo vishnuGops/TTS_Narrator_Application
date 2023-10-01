@@ -18,7 +18,7 @@ if exist "%buildFolderPath%" (
 )
 
 echo Building App Executable
-pyinstaller --noconfirm --log-level=WARN --onefile --nowindow --icon=icon.ico ./TTS_app.py
+pyinstaller --noconfirm --log-level=WARN --onefile --nowindow --icon=icon.ico ./TTSApp.py
 echo Done building TTS Narration App
 
 pause
