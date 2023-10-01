@@ -17,6 +17,10 @@ def create_gui():
         root, text="TTS Narration Application", font=("Arial", 20))
     heading_label.pack()
 
+    # Create a text input field for narration file title
+    narration_file_title = tk.Text(root, height=5, width=50)
+    narration_file_title.pack()
+
     # Create a text input field
     input_text = tk.Text(root, height=20, width=100)
     input_text.pack()
@@ -24,7 +28,7 @@ def create_gui():
     custom_font = font.Font(family="Arial", size=12, weight="bold")
     # Create a button to trigger narration creation
     create_button = tk.Button(root, height=3, width=30, text="Create Narration", font=custom_font,
-                              bg="#9E9E9E", fg="white", command=lambda: Narration.create_narration(input_text))
+                              bg="#9E9E9E", fg="white", command=lambda: Narration.create_narration(input_text, narration_file_title))
     create_button.pack()
     return root
 
